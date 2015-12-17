@@ -3,70 +3,45 @@
 Siri Validator is a java open source project on SIRI V2.0 normalization projet. It's composed on one module :
 * siri-client-france : command line client for tests and validation purpose on SIRI server
 
-Requirements
-------------
+## Release Notes
+
+The release notes (in French) can be found in [CHANGELOG](./CHANGELOG.md) file 
+
+## Requirements
 
 * oraclejdk7
 * openjdk7
 * oraclejdk8
 * openjdk8
 
-External Deps
--------------
+## External Deps
+
 On Debian/Ubuntu/Kubuntu OS :
 ```sh
 sudo apt-get install openjdk-7-jdk
-sudo apt-get install git
 ```
 
-Installation
-------------
+## Installation from binary
 
-Get git repository
+siri.client.france is avalable as a zip :
+download siri.client.france.x.y.z.zip from [maven repository](http://maven.chouette.mobi/irys/siri.client.france)
+
+[Install and configure Wildfly](./doc/install/wildfly.md) 
+
+in wildfly installation repository :
 ```sh
-cd workspace
-git clone -b V1_0 git://github.com/afimb/siri-validator
-cd siri-validator
+bin/jboss-cli.sh connect, deploy --force  (path to ...)/siri_lite.ear
+bin/jboss-cli.sh -c "/system-property=siri_lite.producer.address:add(value='web service SIRI server endpoint address')"
 ```
 
-Test
-----
-
-```sh
-mvn test
-```
-
-More Information
-----------------
-
-More information can be found on the [project website on GitHub](.).
-There is extensive usage documentation available [on the wiki](../../wiki).
-
-Installation
--------------
-
-Install
-```sh
-mvn -Dmaven.test.skip=true install
-```
-
-Usage
--------------
+## Documentation
 
 a user manual (in french) is available on [Chouette Project website](http://www.chouette.mobi).
 
-
-License
--------
+## License
 
 This project is licensed under the CeCILL-B license, a copy of which can be found in the [LICENSE](./LICENSE.md) file.
 
-Release Notes
--------------
-
-The release notes can be found in [CHANGELOG](./CHANGELOG.md) file
-
-Support
--------
+## Support
 
 Users looking for support should file an issue on the GitHub [issue tracking page](../../issues), or file a [pull request](../../pulls) if you have a fix available.
