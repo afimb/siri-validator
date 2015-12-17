@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd"
+	default-init-method="init" default-destroy-method="close">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:irys-client.properties</value>
+				<value>classpath:spring.properties</value>
+			</list>
+		</property>
+		<property name="ignoreResourceNotFound" value="true" />
+	</bean>
+
+	<!-- CLIENT -->
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="false" />
+		<property name="systemPropertiesModeName" value="SYSTEM_PROPERTIES_MODE_OVERRIDE" />
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="locations" value="classpath:irys-client.properties" />
+	</bean>
+
+
+	<bean id="abstractClient" class="irys.client.services.ServiceClient"
+		abstract="true">
+		<property name="serverUrl">
+			<value>${siri.server}</value>
+		</property>
+		<property name="requestorRefValue">
+			<value>${siri.requestorRef}</value>
+		</property>
+		<property name="version">
+			<value>${siri.version}</value>
+		</property>
+		<!-- required if a proxy is present -->
+		<property name="proxyName">
+			<value>${proxy.name}</value>
+		</property>
+		<property name="proxyPort">
+			<value>${proxy.port}</value>
+		</property>
+		<property name="authUser">
+			<value>${siri.authUser}</value>
+		</property>
+		<property name="authPassword">
+			<value>${siri.authPass}</value>
+		</property>
+		<property name="requestCompressionRequired">
+			<value>${siri.requestCompression}</value>
+		</property>
+		<property name="responseCompressionAllowed">
+			<value>${siri.responseCompression}</value>
+		</property>
+	</bean>
+
+	<bean id="checkStatusClient" parent="abstractClient"
+		class="irys.client.services.CheckStatusClient">
+		<property name="requestIdentifierPrefix">
+			<value>${siri.checkStatus.requestIdentifierPrefix}</value>
+		</property>
+	</bean>
+
+	<bean id="generalMessageClient" parent="abstractClient"
+		class="irys.client.services.GeneralMessageClient">
+		<property name="requestIdentifierPrefix">
+			<value>${siri.generalMessage.requestIdentifierPrefix}</value>
+		</property>
+	</bean>
+
+	<bean id="stopMonitoringClient" parent="abstractClient"
+		class="irys.client.services.StopMonitoringClient">
+		<property name="requestIdentifierPrefix">
+			<value>${siri.stopMonitoring.requestIdentifierPrefix}</value>
+		</property>
+	</bean>
+
+	<bean id="vehicleMonitoringClient" parent="abstractClient"
+		class="irys.client.services.VehicleMonitoringClient">
+		<property name="requestIdentifierPrefix">
+			<value>${siri.vehicleMonitoring.requestIdentifierPrefix}</value>
+		</property>
+	</bean>
+
+	<bean id="estimatedTimetableClient" parent="abstractClient"
+		class="irys.client.services.EstimatedTimetableClient">
+		<property name="requestIdentifierPrefix">
+			<value>${siri.estimatedTimetable.requestIdentifierPrefix}</value>
+		</property>
+	</bean>
+
+	<bean id="productionTimetableClient" parent="abstractClient"
+		class="irys.client.services.ProductionTimetableClient">
+		<property name="requestIdentifierPrefix">
+			<value>${siri.productionTimetable.requestIdentifierPrefix}</value>
+		</property>
+	</bean>
+
+	<bean id="discoveryClient" parent="abstractClient"
+		class="irys.client.services.DiscoveryClient">
+		<property name="requestIdentifierPrefix">
+			<value>${siri.discovery.requestIdentifierPrefix}</value>
+		</property>
+	</bean>
+
+	<bean id="subscriptionClient" parent="abstractClient"
+		class="irys.client.services.SubscriptionClient">
+		<property name="requestIdentifierPrefix">
+			<value>${siri.subscription.requestIdentifierPrefix}</value>
+		</property>
+		<property name="subscriptionIdentifierPrefix">
+			<value>${siri.subscription.subscriptionIdentifierPrefix}</value>
+		</property>
+	</bean>
+
+
+	<bean id="AbstractCommand" name="AbstractCommand"
+		class="irys.client.command.AbstractCommand" abstract="true">
+	</bean>
+
+	<bean id="SMClient" name="SMClient" class="irys.client.command.SMCommand"
+		parent="AbstractCommand">
+		<property name="service" ref="stopMonitoringClient" />
+	</bean>
+	<bean id="GMClient" name="GMClient" class="irys.client.command.GMCommand"
+		parent="AbstractCommand">
+		<property name="service" ref="generalMessageClient" />
+	</bean>
+	<bean id="VMClient" name="VMClient" class="irys.client.command.VMCommand"
+		parent="AbstractCommand">
+		<property name="service" ref="vehicleMonitoringClient" />
+	</bean>
+	<bean id="DSClient" name="DSClient" class="irys.client.command.DSCommand"
+		parent="AbstractCommand">
+		<property name="service" ref="discoveryClient" />
+	</bean>
+	<bean id="CSClient" name="CSClient" class="irys.client.command.CSCommand"
+		parent="AbstractCommand">
+		<property name="service" ref="checkStatusClient" />
+	</bean>
+	<bean id="ETClient" name="ETClient" class="irys.client.command.ETCommand"
+		parent="AbstractCommand">
+		<property name="service" ref="estimatedTimetableClient" />
+	</bean>
+	<bean id="PTClient" name="PTClient" class="irys.client.command.PTCommand"
+		parent="AbstractCommand">
+		<property name="service" ref="productionTimetableClient" />
+	</bean>
+	<bean id="Subscribe" name="Subscribe" class="irys.client.command.SubscribeCommand"
+		parent="AbstractCommand">
+		<property name="service" ref="subscriptionClient" />
+
+		<property name="notifyAddress">
+			<value>${siri.notifyAddress}</value>
+		</property>
+
+		<property name="notifyLog">
+			<value>${siri.notifyLog}</value>
+		</property>
+		
+		<property name="services">
+			<map>
+				<entry key="SMClient">
+					<ref bean="SMClient" />
+				</entry>
+				<entry key="GMClient">
+					<ref bean="GMClient" />
+				</entry>
+				<entry key="VMClient">
+					<ref bean="VMClient" />
+				</entry>
+				<entry key="ETClient">
+					<ref bean="ETClient" />
+				</entry>
+				<entry key="PTClient">
+					<ref bean="PTClient" />
+				</entry>
+			</map>
+		</property>
+	</bean>
+
+</beans>
