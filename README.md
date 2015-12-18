@@ -1,7 +1,7 @@
 # Siri Validator
 
-Siri Validator is a java open source project on SIRI V2.0 normalization projet. It's composed on one module :
-* siri-client-france : command line client for tests and validation purpose on SIRI server
+Siri Validator is a java open source project related to the SIRI V2.0 standard. It has only one module :
+* siri-client-france : command line client for testing and validating a SIRI server
 
 ## Release Notes
 
