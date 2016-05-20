@@ -30,6 +30,13 @@
 		</repository>
 		<downloadUrl>http://maven.chouette.mobi</downloadUrl>
 	</distributionManagement>
+	<repositories>
+      <repository>
+         <id>chouette</id>
+         <name>Chouette and irys Repository</name>
+         <url>http://maven.chouette.mobi</url>
+      </repository>
+	</repositories>
 	<build>
 		<extensions>
 			<extension>
