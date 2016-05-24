@@ -1,4 +1,5 @@
 service,id,level,format,parent,xpath,test
-LinesDiscoveryResponse,LINE_REF,ERROR,"Error LINE_REF {2} [{0},{1}]",//*[local-name() = 'AnnotatedLineRef'],*[local-name() = 'LineRef'],^[\w]+:Line:[\d]+:LO
-LinesDiscoveryResponse,LINE_NAME,ERROR,"Error LINE_NAME EXIT {2} [{0},{1}]",//*[local-name() = 'AnnotatedLineRef'],*[local-name() = 'LineName'],NOT_EXIST
-LinesDiscoveryResponse,LINE_NAME,ERROR,"Error LINE_NAM NOT EXIST [{0},{1}]",//*[local-name() = 'AnnotatedLineRef'],*[local-name() = 'LineNam'],EXIST
+StopMonitoringDelivery,1,ERROR,"Error REF {2} [{0},{1}]",//*[local-name() = 'MonitoredVehicleJourney'],*[local-name() = 'LineRef'],^[\w]+:Line:[\d]+:LO
+StopMonitoringDelivery,2,ERROR,"Error NAME EXIT {2} [{0},{1}]",//*[local-name() = 'MonitoredVehicleJourney'],*[local-name() = 'PublishedLineName'],NOT_EXIST
+StopMonitoringDelivery,3,ERROR,"Error NAM NOT EXIST [{0},{1}]",//*[local-name() = 'MonitoredVehicleJourney'],*[local-name() = 'PublishedLineNam'],EXIST
+StopMonitoringDelivery,0,ERROR,Error version,//Notification/*[1],@version,2.0:FR-IDF-2.3

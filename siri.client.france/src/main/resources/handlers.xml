@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <handler-chains xmlns="http://java.sun.com/xml/ns/javaee">
 	<handler-chain>
+		
 		<handler>
-			<handler-name>irys.client.consumer.NotificationLoggingHandler</handler-name>
-			<handler-class>irys.client.consumer.NotificationLoggingHandler</handler-class>
+			<handler-name>irys.client.consumer.ValidationHandler</handler-name>
+			<handler-class>irys.client.consumer.ValidationHandler</handler-class>
 		</handler>
+		
+		<handler>
+			<handler-name>irys.client.consumer.LoggingHandler</handler-name>
+			<handler-class>irys.client.consumer.LoggingHandler</handler-class>
+		</handler>
+		
 	</handler-chain>
 </handler-chains>

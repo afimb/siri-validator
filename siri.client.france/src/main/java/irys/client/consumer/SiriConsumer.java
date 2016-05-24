@@ -185,7 +185,7 @@ public class SiriConsumer implements SiriConsumerDocPort {
 			String subscriptionRef = delivery.getSubscriptionRef().getValue();
 			ServiceDelivery sd = new ServiceDelivery();
 			sd.getProductionTimetableDelivery().add(delivery);
-			save("PT", subscriptionRef, sd);
+			// save("PT", subscriptionRef, sd);
 
 			if (!delivery.isStatus()) {
 				System.out.println("Notification failed : ");
@@ -225,7 +225,7 @@ public class SiriConsumer implements SiriConsumerDocPort {
 			String subscriptionRef = delivery.getSubscriptionRef().getValue();
 			ServiceDelivery sd = new ServiceDelivery();
 			sd.getEstimatedTimetableDelivery().add(delivery);
-			save("ET", subscriptionRef, sd);
+			// save("ET", subscriptionRef, sd);
 
 			if (!delivery.isStatus()) {
 				System.out.println("Notification failed : ");
@@ -389,7 +389,7 @@ public class SiriConsumer implements SiriConsumerDocPort {
 			} else {
 				ServiceDelivery sd = new ServiceDelivery();
 				sd.getStopMonitoringDelivery().add(delivery);
-				save("SM", subscriptionRef, sd);
+				// save("SM", subscriptionRef, sd);
 				if (verbose) {
 
 					for (MonitoredStopVisitCancellationStructure msvc : delivery.getMonitoredStopVisitCancellation()) {
@@ -526,7 +526,7 @@ public class SiriConsumer implements SiriConsumerDocPort {
 			String subscriptionRef = delivery.getSubscriptionRef().getValue();
 			ServiceDelivery sd = new ServiceDelivery();
 			sd.getVehicleMonitoringDelivery().add(delivery);
-			save("VM", subscriptionRef, sd);
+			// save("VM", subscriptionRef, sd);
 
 			if (!delivery.isStatus()) {
 				System.out.println("Notification failed : ");
@@ -751,7 +751,7 @@ public class SiriConsumer implements SiriConsumerDocPort {
 			String subscriptionRef = delivery.getSubscriptionRef().getValue();
 			ServiceDelivery sd = new ServiceDelivery();
 			sd.getGeneralMessageDelivery().add(delivery);
-			save("GM", subscriptionRef, sd);
+			// save("GM", subscriptionRef, sd);
 			if (!delivery.isStatus()) {
 				System.out.println("Notification failed : ");
 				print(delivery.getErrorCondition());
@@ -904,32 +904,32 @@ public class SiriConsumer implements SiriConsumerDocPort {
 
 	Map<String, JAXBContext> contexts = new HashMap<String, JAXBContext>();
 
-	private void save(String service, String subscriptionRef, ServiceDelivery data) {
-		if (!notifyLog)
-			return;
-		String name = subscriptionRef.replaceAll(":", "-");
-		File f = new File(service + "_" + name + "_" + SiriClientUtil.nowFile() + ".xml");
-		try {
-			JAXBContext context = null;
-			synchronized (contexts) {
-				context = contexts.get(data.getClass().getName());
-				if (context == null) {
-					context = JAXBContext.newInstance(data.getClass());
-					contexts.put(data.getClass().getName(), context);
-				}
-			}
-			FileOutputStream stream = new FileOutputStream(f, true);
-			Marshaller marshaller = context.createMarshaller();
-			marshaller.setProperty(javax.xml.bind.Marshaller.JAXB_ENCODING, "UTF-8"); // NOI18N
-			marshaller.setProperty(javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
-			marshaller.marshal(data, stream);
-			stream.close();
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
+//	private void save(String service, String subscriptionRef, ServiceDelivery data) {
+//		if (!notifyLog)
+//			return;
+//		String name = subscriptionRef.replaceAll(":", "-");
+//		File f = new File(service + "_" + name + "_" + SiriClientUtil.nowFile() + ".xml");
+//		try {
+//			JAXBContext context = null;
+//			synchronized (contexts) {
+//				context = contexts.get(data.getClass().getName());
+//				if (context == null) {
+//					context = JAXBContext.newInstance(data.getClass());
+//					contexts.put(data.getClass().getName(), context);
+//				}
+//			}
+//			FileOutputStream stream = new FileOutputStream(f, true);
+//			Marshaller marshaller = context.createMarshaller();
+//			marshaller.setProperty(javax.xml.bind.Marshaller.JAXB_ENCODING, "UTF-8"); // NOI18N
+//			marshaller.setProperty(javax.xml.bind.Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+//			marshaller.marshal(data, stream);
+//			stream.close();
+//
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//	}
 
 }
