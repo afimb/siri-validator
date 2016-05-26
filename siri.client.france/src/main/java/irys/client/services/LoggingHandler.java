@@ -1,9 +1,12 @@
 package irys.client.services;
 
+import irys.client.consumer.Validator;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.Set;
 
@@ -27,10 +30,13 @@ public class LoggingHandler implements SOAPHandler<SOAPMessageContext> {
 	private PrintStream validationOS = null;
 	private SiriErrorCallback callBack = null;
 	private boolean verbose = false;
+	private String responseFileName;
 
 	public void init(String requestFileName, String responseFileName, SiriErrorCallback callBack, boolean verbose) {
 		this.verbose = verbose;
 		this.callBack = callBack;
+		this.responseFileName = responseFileName;
+		
 		if (requestFileName == null) {
 			requestOS = null;
 		} else {
@@ -103,6 +109,11 @@ public class LoggingHandler implements SOAPHandler<SOAPMessageContext> {
 						callBack.setWarnings(false);
 					validationOS.println("no wsdl or xsd warnings");
 				}
+				
+				
+				Validator validator = new Validator();				
+				validator.validateProfile(Paths.get(this.responseFileName), "//*[local-name() = 'Answer']/*[1]");
+				
 			}
 			if (verbose)
 				prettyPrint(msg, System.out);
