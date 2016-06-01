@@ -184,9 +184,12 @@ public class Validator {
 		if (config == null) {
 			BasicConfigurator.configure();
 			log.info("[DSU] initialize");
-			ClassLoader loader = Thread.currentThread().getContextClassLoader();
-			InputStreamReader reader = new InputStreamReader(
-					loader.getResourceAsStream("config.csv"));
+//			ClassLoader loader = Thread.currentThread().getContextClassLoader();
+//			InputStreamReader reader = new InputStreamReader(
+//					loader.getResourceAsStream("config.csv"));
+			Path path = Paths.get("config.csv");
+			InputStreamReader reader = new InputStreamReader(Files.newInputStream(path));
+			
 			config = new HashMap<String, List<Record>>();
 			Iterable<CSVRecord> records = CSVFormat.EXCEL
 					.withHeader(HEADERS.class).withSkipHeaderRecord()
