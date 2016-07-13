@@ -26,6 +26,10 @@
 			<outputDirectory>/</outputDirectory>
 		</file>
 		<file>
+			<source>${project.build.directory}/config.csv</source>
+			<outputDirectory>/</outputDirectory>
+		</file>
+		<file>
 			<source>${project.build.directory}/client.sh</source>
 			<outputDirectory>/</outputDirectory>
 		</file>

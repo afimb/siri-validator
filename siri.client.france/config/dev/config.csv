@@ -1,29 +1,31 @@
 service,id,level,format,parent,xpath,test
-StopMonitoringDelivery,version,ERROR,"{0} {1} {4} [{2},{3}]",(//Answer/*[1]|//Notification/*[1]),@*[name()='version'],2.0:FR-IDF-2.4
-StopMonitoringDelivery,ItemIdentifier,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredStopVisit'],*[local-name() = 'ItemIdentifier'],^([\w]+):(Item)::(\w|_|-)+:LOC
-StopMonitoringDelivery,MonitoringRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredStopVisit'],*[local-name() = 'MonitoringRef'],^([\w]+):(StopPoint|StopArea):(SP|BP|Q):(\w|_|-)+:LOC
-StopMonitoringDelivery,LineRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredVehicleJourney'],*[local-name() = 'LineRef'],^([\w]+):(Line)::(\w|_|-)+:LOC
-StopMonitoringDelivery,OriginRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredVehicleJourney'],*[local-name() = 'OriginRef'],^([\w]+):(StopPoint|StopArea):(SP|BP|Q):(\w|_|-)+:LOC
-StopMonitoringDelivery,DestinationRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredVehicleJourney'],*[local-name() = 'DestinationRef'],^([\w]+):(StopPoint|StopArea):(SP|BP|Q):(\w|_|-)+:LOC
-StopMonitoringDelivery,OperatorRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredVehicleJourney'],*[local-name() = 'OperatorRef'],^([\w]+):(Operator)::(\w|_|-)+:LOC
-StopMonitoringDelivery,JourneyPatternRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredVehicleJourney'],*[local-name() = 'JourneyPatternRef'],^([\w]+):(JourneyPattern)::(\w|_|-)+:LOC
-StopMonitoringDelivery,RouteRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredVehicleJourney'],*[local-name() = 'RouteRef'],^([\w]+):(Route)::(\w|_|-)+:LOC
-StopMonitoringDelivery,PublishedLineName,ERROR,"{0} {1}  NOT EXIST [{2},{3}]",//*[local-name() = 'MonitoredVehicleJourney'],*[local-name() = 'PublishedLineName'],EXIST
-StopMonitoringDelivery,DataFrameRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'FramedVehicleJourneyRef'],*[local-name() = 'DataFrameRef'],^([\w]+):(DataFrame)::(\w|_|-)+:LOC
-StopMonitoringDelivery,DatedVehicleJourneyRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'FramedVehicleJourneyRef'],*[local-name() = 'DatedVehicleJourneyRef'],^([\w]+):(VehicleJourney)::(\w|_|-)+:LOC
-StopMonitoringDelivery,StopPointRef MonitoredCal,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredCall'],*[local-name() = 'StopPointRef'],^([\w]+):(StopPoint|StopArea):(SP|BP|Q):(\w|_|-)+:LOC
-StopMonitoringDelivery,StopPointName MonitoredCall,ERROR,"{0} {1} NOT EXIST [{2},{3}]",//*[local-name() = 'MonitoredCall'],*[local-name() = 'StopPointName'],EXIST
-StopMonitoringDelivery,StopPointRef OnwardCall,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'OnwardCall'],*[local-name() = 'StopPointRef'],^([\w]+):(StopPoint|StopArea):(SP|BP|Q):(\w|_|-)+:LOC
-StopMonitoringDelivery,StopPointName OnwardCall,ERROR,"{0} {1}  NOT EXIST [{2},{3}]",//*[local-name() = 'OnwardCall'],*[local-name() = 'StopPointName'],EXIST
-GeneralMessageDelivery,version,ERROR,"{0} {1} {4} [{2},{3}]",(//Answer/*[1]|//Notification/*[1]),@*[name()='version'],2.0:FR-IDF-2.4
-GeneralMessageDelivery,formatRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'GeneralMessage'],@*[name()='formatRef'],STIF-IDF
-GeneralMessageDelivery,ItemIdentifier,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'GeneralMessage'],*[local-name() = 'ItemIdentifier'],^([\w]+):(Item)::(\w|_|-)+:LOC
-GeneralMessageDelivery,InfoMessageIdentifier,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'GeneralMessage'],*[local-name() = 'InfoMessageIdentifier'],EXIST
-GeneralMessageDelivery,InfoChannelRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'GeneralMessage'],*[local-name() = 'InfoChannelRef'],^(Perturbation|Information|Commercial)
-GeneralMessageDelivery,ValidUntilTime,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'GeneralMessage'],*[local-name() = 'ValidUntilTime'],EXIST
-GeneralMessageDelivery,LineRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'Content'],*[local-name() = 'LineRef'],^([\w]+):(Line)::(\w|_|-)+:LOC
-GeneralMessageDelivery,StopPointRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'Content'],*[local-name() = 'StopPointRef'],^([\w]+):(StopPoint|StopArea):(SP|BP|Q):(\w|_|-)+:LOC
-GeneralMessageDelivery,JourneyPatternRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'Content'],*[local-name() = 'JourneyPatternRef'],^([\w]+):(JourneyPattern)::(\w|_|-)+:LOC
-GeneralMessageDelivery,DestinationRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'Content'],*[local-name() = 'DestinationRef'],^([\w]+):(StopPoint|StopArea):(SP|BP|Q):(\w|_|-)+:LOC
-GeneralMessageDelivery,RouteRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'Content'],*[local-name() = 'RouteRef'],^([\w]+):(Route)::(\w|_|-)+:LOC
-GeneralMessageDelivery,GroupOfLinesRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'Content'],*[local-name() = 'GroupOfLinesRef'],^([\w]+):(TODO)::(\w|_|-)+:LOC
+StopMonitoringDelivery,SM-FRA-REQ-version,ERROR,"{0} {1} {4} [{2},{3}]",(//Answer/*[1]|//Notification/*[1]),@*[name()='version'],^2\.0:FR-IDF-2\.4(-\d*(-\d+\.\d+))$
+StopMonitoringDelivery,SM-FRA-REQ-ItemIdentifier,ERROR,"{0} {1} MISSING [{2},{3}]",//*[local-name() = 'MonitoredStopVisit'],*[local-name() = 'ItemIdentifier'],EXIST
+StopMonitoringDelivery,SM-FRA-ID-ItemIdentifier,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredStopVisit'],*[local-name() = 'ItemIdentifier'],^([\w-]+):Item::([\w-]+):(LOC)?$
+StopMonitoringDelivery,SM-FRA-ID-MonitoringRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredStopVisit'],*[local-name() = 'MonitoringRef'],^([\w-]+):(StopPoint:(BP|Q)|StopArea:SP):([\w-]+):(LOC)?$
+StopMonitoringDelivery,SM-FRA-ID-LineRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredVehicleJourney'],*[local-name() = 'LineRef'],^([\w-]+):Line::([\w-]+):(LOC)?$
+StopMonitoringDelivery,SM-FRA-ID-OriginRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredVehicleJourney'],*[local-name() = 'OriginRef'],^([\w-]+):(StopPoint:(BP|Q)|StopArea:SP):([\w-]+):(LOC)?$
+StopMonitoringDelivery,SM-FRA-ID-DestinationRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredVehicleJourney'],*[local-name() = 'DestinationRef'],^([\w-]+):(StopPoint:(BP|Q)|StopArea:SP):([\w-]+):(LOC)?$
+StopMonitoringDelivery,SM-FRA-ID-OperatorRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredVehicleJourney'],*[local-name() = 'OperatorRef'],^([\w-]+):Operator::([\w-]+):(LOC)?$
+StopMonitoringDelivery,SM-FRA-ID-JourneyPatternRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredVehicleJourney'],*[local-name() = 'JourneyPatternRef'],^([\w-]+):JourneyPattern::([\w-]+):(LOC)?$
+StopMonitoringDelivery,SM-FRA-ID-RouteRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredVehicleJourney'],*[local-name() = 'RouteRef'],^([\w-]+):Route::([\w-]+):(LOC)?$
+StopMonitoringDelivery,SM-FRA-REQ-PublishedLineName,ERROR,"{0} {1} MISSING [{2},{3}]",//*[local-name() = 'MonitoredVehicleJourney'],*[local-name() = 'PublishedLineName'],EXIST
+StopMonitoringDelivery,SM-FRA-ID-DataFrameRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'FramedVehicleJourneyRef'],*[local-name() = 'DataFrameRef'],^([\w-]+):DataFrame::([\w-]+):(LOC)?$
+StopMonitoringDelivery,SM-FRA-ID-DatedVehicleJourneyRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'FramedVehicleJourneyRef'],*[local-name() = 'DatedVehicleJourneyRef'],^([\w-]+):VehicleJourney::([\w-]+):(LOC)?$
+StopMonitoringDelivery,SM-FRA-ID-StopPointRef-in-MonitoredCall,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'MonitoredCall'],*[local-name() = 'StopPointRef'],^([\w-]+):(StopPoint:(BP|Q)|StopArea:SP):([\w-]+):(LOC)?$
+StopMonitoringDelivery,SM-FRA-REQ-StopPointName-in-MonitoredCall,ERROR,"{0} {1} MISSING [{2},{3}]",//*[local-name() = 'MonitoredCall'],*[local-name() = 'StopPointName'],EXIST
+StopMonitoringDelivery,SM-FRA-ID-StopPointRef-in-OnwardCall,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'OnwardCall'],*[local-name() = 'StopPointRef'],^([\w-]+):(StopPoint:(BP|Q)|StopArea:SP):([\w-]+):(LOC)?$
+StopMonitoringDelivery,SM-FRA-REQ-StopPointName-in-OnwardCall,ERROR,"{0} {1}  MISSING [{2},{3}]",//*[local-name() = 'OnwardCall'],*[local-name() = 'StopPointName'],EXIST
+GeneralMessageDelivery,GM-FRA-REQ-version,ERROR,"{0} {1} {4} [{2},{3}]",(//Answer/*[1]|//Notification/*[1]),@*[name()='version'],^2\.0:FR-IDF-2\.4(-\d*(-\d+\.\d+))$
+GeneralMessageDelivery,GM-FRA-REQ-formatRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'GeneralMessage'],@*[name()='formatRef'],^STIF-IDF$
+GeneralMessageDelivery,GM-FRA-REQ-ItemIdentifier,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'GeneralMessage'],*[local-name() = 'ItemIdentifier'],EXIST
+GeneralMessageDelivery,GM-FRA-ID-ItemIdentifier,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'GeneralMessage'],*[local-name() = 'ItemIdentifier'],^([\w-]+):Item::([\w-]+):(LOC)?$
+GeneralMessageDelivery,GM-FRA-ID-InfoMessageIdentifier,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'GeneralMessage'],*[local-name() = 'InfoMessageIdentifier'],^([\w-]+):InfoMessage::([\w-]+):(LOC)?$
+GeneralMessageDelivery,GM-FRA-ID-InfoChannelRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'GeneralMessage'],*[local-name() = 'InfoChannelRef'],^(Perturbation|Information|Commercial)$
+GeneralMessageDelivery,GM-FRA-REQ-ValidUntilTime,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'GeneralMessage'],*[local-name() = 'ValidUntilTime'],EXIST
+GeneralMessageDelivery,GM-FRA-ID-LineRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'Content'],*[local-name() = 'LineRef'],^([\w-]+):Line::([\w-]+):(LOC)?$
+GeneralMessageDelivery,GM-FRA-ID-StopPointRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'Content'],*[local-name() = 'StopPointRef'],^([\w-]+):(StopPoint:(BP|Q)|StopArea:SP):([\w-]+):(LOC)?$
+GeneralMessageDelivery,GM-FRA-ID-JourneyPatternRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'Content'],*[local-name() = 'JourneyPatternRef'],^([\w-]+):JourneyPattern::([\w-]+):(LOC)?$
+GeneralMessageDelivery,GM-FRA-ID-DestinationRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'Content'],*[local-name() = 'DestinationRef'],^([\w-]+):(StopPoint:(BP|Q)|StopArea:SP):([\w-]+):(LOC)?$
+GeneralMessageDelivery,GM-FRA-ID-RouteRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'Content'],*[local-name() = 'RouteRef'],^([\w-]+):Route::([\w-]+):(LOC)?$
+GeneralMessageDelivery,GM-FRA-ID-GroupOfLinesRef,ERROR,"{0} {1} {4} [{2},{3}]",//*[local-name() = 'Content'],*[local-name() = 'GroupOfLinesRef'],^([\w-]+):GroupOfLines::([\w-]+):(LOC)?$

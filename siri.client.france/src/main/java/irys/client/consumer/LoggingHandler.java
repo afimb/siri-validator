@@ -117,7 +117,16 @@ public class LoggingHandler implements SOAPHandler<SOAPMessageContext> {
 	}
 
 	enum Service {
-		SM("StopMonitoringDelivery"), VM("VehicleMonitoringDelivery");
+		CM("ConnectionMonitoringDelivery"), 
+		CT("ConnectionTimetableDelivery"), 
+		ET("EstimatedTimetableDelivery"), 
+		FM("FacilityMonitoringDelivery"), 
+		GM("GeneralMessageDelivery"), 
+		PT("ProductionTimetableDelivery"), 
+		SM("StopMonitoringDelivery"), 
+		ST("StopTimetableDelivery"), 
+		SX("SituationExchangeDelivery"), 
+		VM("VehicleMonitoringDelivery");
 
 		private String value;
 

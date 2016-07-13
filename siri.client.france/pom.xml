@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<artifactId>siri-validator</artifactId>
-		<version>1.0.0</version>
+		<version>1.1.0</version>
 		<groupId>irys</groupId>
 	</parent>
 	<artifactId>siri.client.france</artifactId>
