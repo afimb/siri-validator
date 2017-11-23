@@ -48,7 +48,7 @@ public class DiscoveryClient extends ServiceClient
       requestorRef.setValue(requestorRefValue);
       serviceRequestInfo.setRequestorRef(requestorRef);
       MessageQualifierStructure id =  factory.createMessageQualifierStructure();
-      id.setValue(requestIdentifierPrefix + getRequestNumber());
+      id.setValue(requestIdentifierPrefix + getRequestNumber()+requestIdentifierSuffix);
       serviceRequestInfo.setMessageIdentifier(id);
    }
 

@@ -130,6 +130,8 @@ public class ServiceClient {
 	@Setter
 	protected String requestIdentifierPrefix;
 	@Setter
+	protected String requestIdentifierSuffix;
+	@Setter
 	protected String proxyName = "";
 	@Setter
 	protected String proxyPort = "8080";
@@ -241,7 +243,7 @@ public class ServiceClient {
 	 * @return
 	 */
 	public WsServiceRequestInfoStructure buildWsServiceRequestInfoStructure() {
-		return buildWsServiceRequestInfoStructure(requestIdentifierPrefix);
+		return buildWsServiceRequestInfoStructure(requestIdentifierPrefix,requestIdentifierSuffix);
 	}
 
 	/**
@@ -251,10 +253,10 @@ public class ServiceClient {
 	 * @return
 	 */
 	public WsServiceRequestInfoStructure buildWsServiceRequestInfoStructure(
-			String requestIdentifierPrefix) {
+			String requestIdentifierPrefix, String requestIdentifierSuffix) {
 		WsServiceRequestInfoStructure serviceRequestInfo = new WsServiceRequestInfoStructure();
 		populateServiceInfoStructure(serviceRequestInfo,
-				requestIdentifierPrefix);
+				requestIdentifierPrefix, requestIdentifierSuffix);
 		return serviceRequestInfo;
 	}
 
@@ -270,7 +272,7 @@ public class ServiceClient {
 	 */
 	public void populateServiceInfoStructure(
 			ContextualisedRequestStructure serviceRequestInfo,
-			String requestIdentifierPrefix) {
+			String requestIdentifierPrefix, String requestIdentifierSuffix) {
 		serviceRequestInfo.setRequestTimestamp(xmlFactory
 				.newXMLGregorianCalendar(new GregorianCalendar()));
 		ParticipantRefStructure requestorRef = factory
@@ -279,7 +281,7 @@ public class ServiceClient {
 		serviceRequestInfo.setRequestorRef(requestorRef);
 		MessageQualifierStructure id = factory
 				.createMessageQualifierStructure();
-		id.setValue(requestIdentifierPrefix + getRequestNumber());
+		id.setValue(requestIdentifierPrefix + getRequestNumber()+ requestIdentifierSuffix);
 		serviceRequestInfo.setMessageIdentifier(id);
 
 	}
@@ -321,7 +323,7 @@ public class ServiceClient {
 		serviceRequestInfo.setRequestorRef(requestorRef);
 		MessageQualifierStructure id = factory
 				.createMessageQualifierStructure();
-		id.setValue(requestIdentifierPrefix + getRequestNumber());
+		id.setValue(requestIdentifierPrefix + getRequestNumber() + requestIdentifierSuffix);
 		serviceRequestInfo.setMessageIdentifier(id);
 	}
 

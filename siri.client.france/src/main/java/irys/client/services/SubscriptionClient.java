@@ -66,6 +66,7 @@ public class SubscriptionClient extends ServiceClient
 {
 
 	@Getter @Setter private String subscriptionIdentifierPrefix ;
+	@Getter @Setter private String subscriptionIdentifierSuffix ;
 
    public AbstractSubscriptionStructure buildSubRequest(SiriSubscriptionRequestStructure subscriptionRequest,GregorianCalendar requestTimestamp, AbstractServiceRequestStructure structure, String  initialTerminationTime, boolean incrementalUpdates, int changeBeforeUpdates,int updateInterval,String subscriptionId)
    {
@@ -191,7 +192,7 @@ public class SubscriptionClient extends ServiceClient
 
 		abstractRequest.setInitialTerminationTime(xmlFactory.newXMLGregorianCalendar(initialTerminationTime));
 		SubscriptionQualifierStructure subscriptionIdentifier = factory.createSubscriptionQualifierStructure();
-		subscriptionIdentifier.setValue(subscriptionIdentifierPrefix+subscriptionId);
+		subscriptionIdentifier.setValue(subscriptionIdentifierPrefix+subscriptionId+subscriptionIdentifierSuffix);
 		abstractRequest.setSubscriptionIdentifier(subscriptionIdentifier);
 		
 		return abstractRequest;
@@ -278,7 +279,7 @@ public class SubscriptionClient extends ServiceClient
       requestorRef.setValue(requestorRefValue);
       request.setRequestorRef(requestorRef);
       MessageQualifierStructure id =  factory.createMessageQualifierStructure();
-      id.setValue(requestIdentifierPrefix + getRequestNumber());
+      id.setValue(requestIdentifierPrefix + getRequestNumber()+requestIdentifierSuffix);
       request.setMessageIdentifier(id);
       
    }

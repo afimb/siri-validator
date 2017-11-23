@@ -64,12 +64,18 @@
 		<property name="requestIdentifierPrefix">
 			<value>${siri.checkStatus.requestIdentifierPrefix}</value>
 		</property>
+		<property name="requestIdentifierSuffix">
+			<value>${siri.checkStatus.requestIdentifierSuffix}</value>
+		</property>
 	</bean>
 
 	<bean id="generalMessageClient" parent="abstractClient"
 		class="irys.client.services.GeneralMessageClient">
 		<property name="requestIdentifierPrefix">
 			<value>${siri.generalMessage.requestIdentifierPrefix}</value>
+		</property>
+		<property name="requestIdentifierSuffix">
+			<value>${siri.generalMessage.requestIdentifierSuffix}</value>
 		</property>
 	</bean>
 
@@ -78,12 +84,18 @@
 		<property name="requestIdentifierPrefix">
 			<value>${siri.stopMonitoring.requestIdentifierPrefix}</value>
 		</property>
+		<property name="requestIdentifierSuffix">
+			<value>${siri.stopMonitoring.requestIdentifierSuffix}</value>
+		</property>
 	</bean>
 
 	<bean id="vehicleMonitoringClient" parent="abstractClient"
 		class="irys.client.services.VehicleMonitoringClient">
 		<property name="requestIdentifierPrefix">
 			<value>${siri.vehicleMonitoring.requestIdentifierPrefix}</value>
+		</property>
+		<property name="requestIdentifierSuffix">
+			<value>${siri.vehicleMonitoring.requestIdentifierSuffix}</value>
 		</property>
 	</bean>
 
@@ -92,12 +104,18 @@
 		<property name="requestIdentifierPrefix">
 			<value>${siri.estimatedTimetable.requestIdentifierPrefix}</value>
 		</property>
+		<property name="requestIdentifierSuffix">
+			<value>${siri.estimatedTimetable.requestIdentifierSuffix}</value>
+		</property>
 	</bean>
 
 	<bean id="productionTimetableClient" parent="abstractClient"
 		class="irys.client.services.ProductionTimetableClient">
 		<property name="requestIdentifierPrefix">
 			<value>${siri.productionTimetable.requestIdentifierPrefix}</value>
+		</property>
+		<property name="requestIdentifierSuffix">
+			<value>${siri.productionTimetable.requestIdentifierSuffix}</value>
 		</property>
 	</bean>
 
@@ -106,6 +124,9 @@
 		<property name="requestIdentifierPrefix">
 			<value>${siri.discovery.requestIdentifierPrefix}</value>
 		</property>
+		<property name="requestIdentifierSuffix">
+			<value>${siri.discovery.requestIdentifierSuffix}</value>
+		</property>
 	</bean>
 
 	<bean id="subscriptionClient" parent="abstractClient"
@@ -113,8 +134,14 @@
 		<property name="requestIdentifierPrefix">
 			<value>${siri.subscription.requestIdentifierPrefix}</value>
 		</property>
+		<property name="requestIdentifierSuffix">
+			<value>${siri.subscription.requestIdentifierSuffix}</value>
+		</property>
 		<property name="subscriptionIdentifierPrefix">
 			<value>${siri.subscription.subscriptionIdentifierPrefix}</value>
+		</property>
+		<property name="subscriptionIdentifierSuffix">
+			<value>${siri.subscription.subscriptionIdentifierSuffix}</value>
 		</property>
 	</bean>
 
